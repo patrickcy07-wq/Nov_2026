@@ -1,9 +1,14 @@
+
 pipeline {
     agent any
 
-  tools {
-    nodejs 'Node18'
-}
+    tools {
+        nodejs 'Node18'
+    }
+
+    environment {
+        NODE_OPTIONS = '--max-old-space-size=4096'
+    }
 
     stages {
         stage('Checkout') {
