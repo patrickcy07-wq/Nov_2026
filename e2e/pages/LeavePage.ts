@@ -31,8 +31,8 @@ export class LeavePage {
         );
 
         this.leaveType = page.locator(
-            '//label[text()="Leave Type"]/../following-sibling::div//div[contains(@class,"oxd-select-text")]'
-        );
+    '//label[text()="Leave Type"]/../following-sibling::div//div[contains(@class,"oxd-select-text-input")]'
+);
 
         this.searchButton = page.getByRole('button', { name: 'Search' });
     }
@@ -54,12 +54,14 @@ export class LeavePage {
     }
 
     async selectLeaveType(value: string) {
-        await this.basePage.click(this.leaveType);
 
-        await this.basePage.click(
-            this.page.getByRole('option', { name: value, exact: true })
-        );
-    }
+    await this.basePage.click(this.leaveType);
+
+    await this.page.getByRole('option', {
+        name: value,
+        exact: true
+    }).click();
+}
 
     async clickSearchButton() {
         await this.basePage.click(this.searchButton);
